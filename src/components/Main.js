@@ -8,10 +8,10 @@ function Main() {
 
   const [confirm , setConfirm] = useState(false)
 
-  console.log(title)
+  console.log(title,descript,fileImg)
 
   const createMame = () => {
-
+    setConfirm(!confirm)
   }
 
 
@@ -19,10 +19,19 @@ function Main() {
     <div className='main-container'>
         <div className='inputs'>
             <input type='text' placeholder='tekst główny' onChange={ (e) => setTitle(e.target.value)}></input>
-            <input type="file" placeholder='dodaj zdjecie'></input>
+            <input type="file" placeholder='dodaj zdjecie' onChange={ (e) => console.log(e.target.value)}></input>
             <input type='text' placeholder='opis' onChange={ (e) => setDescript(e.target.value)}></input>
             <button onClick={createMame}>Create mame</button>
         </div>
+
+        {confirm ? 
+        <div>
+          <h1>{title}</h1>
+          <img src={fileImg} alt={title}></img>
+          <p>{descript}</p>
+        </div>
+         : ''}
+        
     </div>
   )
 }
