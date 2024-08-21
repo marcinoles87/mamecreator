@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.App{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+input{
+    margin: 10px;
+}
+
+
+
+.mem-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(205, 255, 3);
+    padding: 10px;
+    background-color: black;
+    width: 80%;
+   
+
+}
+
+.mem-container h1{
+    color: yellow;
+}
+
+.mem-container img{
+    width: 50%;
+}
+
+.mem-container p{
+    color:white;
+}
