@@ -9,15 +9,27 @@ import { projectFirestore,projectStorage,app } from './firebase/config';
 function App() {
 
   const db = projectFirestore
-  const colRef = collection(db,'mems')
+  const colRef = collection(db,"mems")
+
+
 
   //get data from firestore
 
-  const docSnap =  getDoc(colRef)
+  const getData = async () => {
+
+      const docSnap = await getDoc(collection(db,"mems"));
+      const data = []
+      
+      docSnap.forEach( (doc) => {
+        data.push(doc.data())
+      })
+        
+        console.log(data)
+  }
+
   
-  console.log(docSnap.data)
 
-
+getData()
 
   return (
     <div className="App">
