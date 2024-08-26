@@ -21,6 +21,8 @@ function Main() {
   }
 
 
+
+
   return (
     <div className='main-container'>
         <div className='inputs'>
@@ -29,6 +31,8 @@ function Main() {
             <input type='text' placeholder='opis' onChange={ (e) => setDescript(e.target.value)}></input>
             <button onClick={createMame}>Create mame</button>
         </div>
+
+      
 
         {confirm ? 
         <div className='mem-container'>

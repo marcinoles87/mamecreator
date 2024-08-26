@@ -1,39 +1,57 @@
 
-import { collection, getDoc } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
 
 import { projectFirestore,projectStorage,app } from './firebase/config';
+import { useEffect, useState } from 'react';
+import { list } from 'firebase/storage';
 
 function App() {
 
   const db = projectFirestore
-  const colRef = collection(db,"mems")
+  const memRef = collection(db,"mems")
+
+  const [listMem , setListMem] = useState([])
+ 
 
 
+useEffect( () => {
 
-  //get data from firestore
+  const getMemsList = async () =>{
+    
+    try{
+      const data = await getDocs(memRef);
+      console.log(data)
+      const filtredData = data.docs.map( (doc) =>({
+        ...doc.data() ,
+        id: doc.id ,
 
-  const getData = async () => {
-
-      const docSnap = await getDoc(collection(db,"mems"));
-      const data = []
-      
-      docSnap.forEach( (doc) => {
-        data.push(doc.data())
-      })
-        
-        console.log(data)
+      }))
+      setListMem(filtredData)
+    }catch(err){
+      console.log(err)
+    }
   }
+
+  getMemsList()
+
+
+} , [])
+
+console.log(listMem)
+  
+
+
 
   
 
-getData()
+
 
   return (
     <div className="App">
-      <Header></Header>
+      <Header ></Header>
       <Main></Main>
     </div>
   );
